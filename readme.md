@@ -39,19 +39,32 @@ When a repo isn't yet on the disk, the script will clone it.
 ```
 Getting the list of repositories on Github of cavo789
 
-40 repositories found, process them one by one
+41 repositories found, process them one by one
 
-   001/040 - dotfiles is already present on the disk, skip
-   002/040 - JD18FR-Initiation-GIT is already present on the disk, skip
-   003/040 - joomla_free is already present on the disk, skip
-   004/040 - joomla_mod_agency is not yet there ==> clone the repo
+   001/041 - dotfiles is already present on the disk, skip
+   002/041 - github_clone_all is already present on the disk, skip
+   003/041 - JD18FR-Initiation-GIT is not yet there ==> clone the repo
 
-Cloning into 'joomla_mod_agency'...
-remote: Enumerating objects: 79, done.
-remote: Total 79 (delta 0), reused 0 (delta 0), pack-reused 79
-Unpacking objects: 100% (79/79), done.
+Cloning into 'JD18FR-Initiation-GIT'...
+remote: Enumerating objects: 8, done.
+remote: Total 8 (delta 0), reused 0 (delta 0), pack-reused 8
+Unpacking objects: 100% (8/8), done.
 Checking connectivity... done.
-   005/040 - joomla_rd_subs is not yet there ==> clone the repo
+
+   004/041 - joomla_free is already present on the disk, skip
+   005/041 - joomla_mod_agency is already present on the disk, skip
+   006/041 - joomla_rd_subs is already present on the disk, skip
+   007/041 - jsonlint is already present on the disk, skip
+   008/041 - laravel_tips is already present on the disk, skip
+   009/041 - laravel_todos is already present on the disk, skip
+   010/041 - marknotes is already present on the disk, skip
+   011/041 - marknotes_convert is already present on the disk, skip
+   012/041 - marknotes_csv2md is already present on the disk, skip
+   013/041 - marknotes_install is already present on the disk, skip
+   ...
+   039/041 - vbs_sql_sp_columns is already present on the disk, skip
+   040/041 - vbs_utilities is already present on the disk, skip
+   041/041 - _skeleton is already present on the disk, skip
 ```
 
 ## License

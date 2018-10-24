@@ -15,8 +15,9 @@
 define('GIT_USERNAME', 'cavo789');
 // END Customization-- -------------------------------------------
 
-// API for getting the list of repos. "per_page=0" to get all repos
-define('API', 'https://api.github.com/users/%s/repos?per_page=1');
+// API for getting the list of repos. "per_page=1000" to get all repos
+// (unless if the user has more than 1000 ;-))
+define('API', 'https://api.github.com/users/%s/repos?per_page=1000');
 
 define('DS', DIRECTORY_SEPARATOR);
 
@@ -25,13 +26,13 @@ echo 'Getting the list of repositories on Github of ' . GIT_USERNAME . PHP_EOL .
 // Run the API, get the JSON answer and convert into an array
 $api = sprintf(API, GIT_USERNAME);
 $json = shell_exec('curl -s ' . $api);
-$arrRepos = json_decode($json);
+$arrRepos = json_decode($json, true);
 
-if (isset($arrRepos->message)) {
+if (isset($arrRepos['message'])) {
 	// Ouch, problem.
 	// The API call is perhaps no more valid or, simply, the specified user is incorrect or
 	// doesn't have repositories.
-	die ('Error - ' . $arrRepos->message . PHP_EOL . 'Please check ' . $api . 
+	die ('Error - ' . $arrRepos['message'] . PHP_EOL . 'Please check ' . $api . 
 		' in a browser to see the result; perhaps the user doesn\'t have any repository');
 }
 
@@ -50,16 +51,17 @@ if ($wCount > 0) {
 		$i += 1;
 
 		// "%'.03d" for showing a number in three positions, with leading zeros like in "001"
-		$output = sprintf("   %'.03d/%'.03d - " . $repo->name, $i, $wCount);
+		$output = sprintf("   %'.03d/%'.03d - " . $repo['name'], $i, $wCount);
 	
-		if (is_dir(__DIR__ . DS . $repo->name)) {
+		if (is_dir(__DIR__ . DS . $repo['name'])) {
 			echo $output . ' is already present on the disk, skip' . PHP_EOL;
 		} else {
 			echo $output . ' is not yet there ==> clone the repo' . PHP_EOL . PHP_EOL;
 			// Not yet on the disk, start a git clone
-			exec("git clone " . $repo->clone_url);
+			exec("git clone " . $repo['clone_url']);
 			echo PHP_EOL;
 		}
 	}
 
 }
+	
