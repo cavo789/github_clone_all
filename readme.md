@@ -1,6 +1,6 @@
-![Banner](images/banner.jpg)
-
 # github_clone_all
+
+![Banner](./banner.svg)
 
 > Get the list of repositories of someone and, repo by repo, check if a clone is already present on disk; if not, make a clone
 
